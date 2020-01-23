@@ -1,9 +1,10 @@
 // variables
+// const navbar = document.querySelector(".home-nav");
 const navList = document.querySelector(".nav-list");
-const burger = document.querySelector(".burger");
-const navbar = document.querySelector(".home-nav");
+const navLogo = document.querySelector("nav img");
 const navElements = document.querySelectorAll(".nav-list li");
 const spanElements = document.querySelectorAll(".nav-list span");
+const burger = document.querySelector(".burger");
 const lineElements = document.querySelectorAll(".burger .line");
 
 //sets home-page height to 100vh
@@ -89,6 +90,8 @@ function widthChange(largeScreenMQ) {
     navList.classList.remove("nav-short");
     navList.classList.remove("desktop-nav-transition");
     navList.classList.remove("nav-white-transition");
+    navLogo.classList.remove("line-transition");
+    navLogo.classList.remove("invisible");
     lineElements[0].classList.remove("line-up-rotation");
     lineElements[1].classList.remove("line-invisible");
     lineElements[2].classList.remove("line-down-rotation");
@@ -117,6 +120,8 @@ function changeNav() {
     navList.classList.remove("nav-transparent");
     navList.classList.remove("nav-white-transition");
     navList.classList.remove("nav-short");
+    navLogo.classList.remove("invisible");
+    // navLogo.classList.remove("line-transition");
     navElements.forEach(function(navElement) {
       if (
         navElement.innerText !== "ABOUT" &&
@@ -164,6 +169,8 @@ function changeNav() {
     navList.classList.add("nav-white-transition");
     navList.classList.add("nav-white");
     navList.classList.add("nav-short");
+    navLogo.classList.add("line-transition");
+    navLogo.classList.add("invisible");
     // navList.style.float = "right";
     // navList.style.right = "0";
     // navList.style.backgroundColor = "white";

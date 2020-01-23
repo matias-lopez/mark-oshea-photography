@@ -79,6 +79,14 @@ nav {
   /* height: 200px; */
 }
 
+nav img {
+  position: absolute;
+  height: 65px;
+  z-index: 2;
+  left: 15px;
+  top: 3px;
+}
+
 .nav-list li {
   /* width: 100%; */
   /* cursor: pointer; */
@@ -308,7 +316,7 @@ footer {
     /* position: relative; */
     /* background-color: rgba(167, 202, 224, 0.596); */
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     list-style: none;
     align-items: center;
     /* transition-property: none; */
@@ -327,7 +335,7 @@ footer {
   nav img {
     position: fixed;
     height: 70px;
-    z-index: 2;
+    /* z-index: 2; */
     left: 2rem;
     top: -5px;
   }
@@ -373,7 +381,7 @@ footer {
   }
 
   .home-text-content .btn {
-    font-size: 1.8em;
+    font-size: 1.5em;
     font-weight: 500;
     display: block;
     color: white;
@@ -389,6 +397,7 @@ footer {
 
   .home-text-content .btn.contact {
     margin-top: 1.5rem;
+    color: white;
   }
 
   .home-text-content .btn.portfolio:hover {
@@ -423,7 +432,7 @@ footer {
   }
 
   .home-social svg {
-    width: 100%;
+    width: 50px;
     height: 50px;
     margin-top: 0.5rem;
   }
