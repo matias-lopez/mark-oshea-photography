@@ -235,7 +235,7 @@ nav img {
 } */
 
 /* WEDDING PACKAGES */
-#wedding-packages {
+#wedding {
   /* background-image: linear-gradient(
     180deg,
     rgb(190, 187, 183) 6%,
@@ -453,7 +453,7 @@ footer {
     background-attachment: fixed;
   }
 
-  #wedding-packages {
+  #wedding-info {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "text image";
