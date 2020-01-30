@@ -22,7 +22,6 @@ h2 {
   font-size: 1.8rem;
   line-height: 1rem;
   letter-spacing: 0.1rem;
-  margin: 0.5rem 0;
   text-shadow: 1px 1px 1.8px #515457e8;
 }
 
@@ -151,6 +150,7 @@ nav img {
 .home-text-content h2 {
   color: rgba(248, 248, 248, 0.911);
   text-shadow: 3px 2px 1.8px #515457e8;
+  margin: 0.5rem 0;
 }
 
 .home-btns {
@@ -465,12 +465,18 @@ footer {
     grid-area: text;
   }
 
+  #wedding h2,
+  .gallery-header h2 {
+    font-size: 2.5rem;
+    padding: 5rem 0 3rem;
+  }
+
   .wedding-text h3 {
     margin-top: 2.5rem;
   }
 
   .wedding-image {
-    background-color: lightblue;
+    /* background-color: lightblue; */
     grid-area: image;
     margin: 5rem 2.5rem;
     /* background-size: cover; */
@@ -480,10 +486,12 @@ footer {
   .wedding-image img {
     height: 100%;
     width: 100%;
+    border-radius: 15px;
+    background-position: cover;
   }
 
   .gallery-header h2 {
-    padding: 5rem 0 3rem;
+    /* padding: 5rem 0 3rem; */
   }
 
   .gallery-images {
@@ -598,4 +606,50 @@ footer {
 .nav-white-transition {
   transition: box-shadow 0.5s ease-in-out, opacity 0.5s ease-in-out,
     background-color 0.5s ease-in-out;
+}
+
+#progress-bar {
+  width: 0;
+  height: 5px;
+  background: linear-gradient(
+    to right,
+    rgba(216, 216, 216, 0.575) 30%,
+    rgba(204, 204, 204, 0.932) 50%,
+    rgba(238, 237, 237, 0.973) 70%,
+    rgb(255, 255, 255)
+  );
+  /* background-color: pink; */
+  z-index: 1;
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-radius: 3px;
+  /* display: block; */
+}
+
+/* GSAP */
+.marker {
+  width: 100%;
+  left: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: 100;
+}
+
+.timeline-trigger {
+  position: fixed;
+  border: 1px solid blue;
+  z-index: 90;
+  left: 0;
+  bottom: 0;
+}
+
+.start-trigger {
+  border: 1px solid green;
+  position: absolute;
+}
+
+.end-trigger {
+  border: 1px solid red;
+  position: absolute;
 }

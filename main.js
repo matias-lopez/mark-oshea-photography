@@ -207,3 +207,96 @@ $(".btn.portfolio").on("click", function() {
     1000
   );
 });
+
+// ---------------------
+// gsap!
+// ---------------------
+// var tl = new TimelineMax({ onUpdate: updatePercentage });
+
+// let tween = gsap.to("#progress-bar", { scaleX: 100, duration: 1 });
+
+// function updatePercentage() {
+// tl.progress();
+// console.log(tl.progress);
+// }
+//
+//
+
+let triggerOffset = document.documentElement.clientHeight;
+let sceneStart = triggerOffset;
+let duration = sceneStart;
+
+// gsap.set(".timeline-trigger", {
+//   top: triggerOffset
+// });
+
+// gsap.set(".start-trigger", {
+//   top: sceneStart
+// });
+
+// gsap.set(".end-trigger", {
+//   top: 2389
+// });
+
+let span = document.querySelector("#progress-bar");
+let weddingImg = document.querySelector(".wedding-image img");
+
+let timeLine = gsap.timeline({
+  paused: true,
+  defaults: { duration: duration }
+});
+
+const startScrollPos = document.documentElement.scrollTop;
+document.documentElement.scrollTop = 0;
+
+timeLine.to(span, { width: "100%" }, sceneStart).to(span, { opacity: 0 });
+
+document.documentElement.scrollTop = startScrollPos;
+
+// Set timeline time to scrollTop
+function update() {
+  timeLine.time(window.pageYOffset + triggerOffset);
+}
+
+window.addEventListener("scroll", update);
+update();
+
+// ---------------------
+let triggerOffset2 = document.documentElement.clientHeight;
+let sceneStart2 = triggerOffset2;
+let duration2 = sceneStart2;
+
+gsap.set(".timeline-trigger", {
+  top: triggerOffset2 - 2
+});
+
+gsap.set(".start-trigger", {
+  top: sceneStart2
+});
+
+gsap.set(".end-trigger", {
+  top: 2 * sceneStart2
+});
+
+let timeLine2 = gsap.timeline({
+  paused: true,
+  defaults: { duration: duration2 }
+});
+
+// const startScrollPos2 = document.documentElement.scrollTop;
+// document.documentElement.scrollTop = 0;
+
+timeLine
+  .from(weddingImg, { x: "200", opacity: "0" }, sceneStart2 + 300)
+  .to(weddingImg, { x: "0", opacity: 1 });
+// .to(weddingImg, { height: "30%" });
+
+// document.documentElement.scrollTop = startScrollPos2;
+
+// Set timeline time to scrollTop
+function update2() {
+  timeLine2.time(window.pageYOffset + triggerOffset2);
+}
+
+window.addEventListener("scroll", update2);
+update2();
