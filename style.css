@@ -17,6 +17,10 @@ body {
   background-color: rgba(250, 250, 250, 0.904);
 }
 
+main {
+  overflow-x: hidden;
+}
+
 h2 {
   text-align: center;
   font-size: 1.8rem;
@@ -430,9 +434,10 @@ footer {
     display: flex;
     flex-direction: column;
     position: fixed;
+    margin-right: 2rem;
     right: 0;
     top: 50%;
-    margin-right: 2rem;
+    z-index: 1;
     transform: translateY(-50%);
   }
 
@@ -627,8 +632,8 @@ footer {
   /* display: block; */
 }
 
-/* GSAP */
-.marker {
+/* GSAP helpers */
+/* .marker {
   width: 100%;
   left: 0;
   pointer-events: none;
@@ -652,4 +657,4 @@ footer {
 .end-trigger {
   border: 1px solid red;
   position: absolute;
-}
+} */

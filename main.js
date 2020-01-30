@@ -211,16 +211,6 @@ $(".btn.portfolio").on("click", function() {
 // ---------------------
 // gsap!
 // ---------------------
-// var tl = new TimelineMax({ onUpdate: updatePercentage });
-
-// let tween = gsap.to("#progress-bar", { scaleX: 100, duration: 1 });
-
-// function updatePercentage() {
-// tl.progress();
-// console.log(tl.progress);
-// }
-//
-//
 
 let triggerOffset = document.documentElement.clientHeight;
 let sceneStart = triggerOffset;
@@ -239,7 +229,6 @@ let duration = sceneStart;
 // });
 
 let span = document.querySelector("#progress-bar");
-let weddingImg = document.querySelector(".wedding-image img");
 
 let timeLine = gsap.timeline({
   paused: true,
@@ -262,41 +251,86 @@ window.addEventListener("scroll", update);
 update();
 
 // ---------------------
-let triggerOffset2 = document.documentElement.clientHeight;
-let sceneStart2 = triggerOffset2;
-let duration2 = sceneStart2;
+// wedding image anim
+// ---------------------
 
-gsap.set(".timeline-trigger", {
-  top: triggerOffset2 - 2
-});
+let weddingImg = document.querySelector(".wedding-image img");
+let offsetY = document.documentElement.clientHeight;
 
-gsap.set(".start-trigger", {
-  top: sceneStart2
-});
-
-gsap.set(".end-trigger", {
-  top: 2 * sceneStart2
-});
-
-let timeLine2 = gsap.timeline({
-  paused: true,
-  defaults: { duration: duration2 }
-});
-
-// const startScrollPos2 = document.documentElement.scrollTop;
-// document.documentElement.scrollTop = 0;
-
-timeLine
-  .from(weddingImg, { x: "200", opacity: "0" }, sceneStart2 + 300)
-  .to(weddingImg, { x: "0", opacity: 1 });
-// .to(weddingImg, { height: "30%" });
-
-// document.documentElement.scrollTop = startScrollPos2;
-
-// Set timeline time to scrollTop
-function update2() {
-  timeLine2.time(window.pageYOffset + triggerOffset2);
+function showWeddingImg() {
+  let scrolledY = window.pageYOffset;
+  console.log(scrolledY);
+  gsap.from(weddingImg, { x: "800", opacity: "0" });
+  if (scrolledY > 750) {
+    gsap.to(weddingImg, {
+      x: "0",
+      opacity: "1",
+      duration: 1
+    });
+    // gsap.to(weddingImg, { x: "0", opacity: 1 });
+    window.removeEventListener("scroll", showWeddingImg);
+  }
 }
 
-window.addEventListener("scroll", update2);
-update2();
+window.addEventListener("scroll", showWeddingImg);
+
+// // .to(weddingImg, { height: "30%" });
+
+// ---------------------
+// gsap!
+// ---------------------
+// var tl = new TimelineMax({ onUpdate: updatePercentage });
+
+// let tween = gsap.to("#progress-bar", { scaleX: 100, duration: 1 });
+
+// function updatePercentage() {
+// tl.progress();
+// console.log(tl.progress);
+// }
+//
+//
+
+// ---------------------
+// wedding image on scroll
+// ---------------------
+
+// let weddingImg = document.querySelector(".wedding-image img");
+
+// let triggerOffset2 = document.documentElement.clientHeight;
+// let sceneStart2 = triggerOffset2;
+// let duration2 = sceneStart2;
+
+// gsap.set(".timeline-trigger", {
+//   top: triggerOffset2 - 2
+// });
+
+// gsap.set(".start-trigger", {
+//   top: sceneStart2
+// });
+
+// gsap.set(".end-trigger", {
+//   top: 2 * sceneStart2
+// });
+
+// let timeLine2 = gsap.timeline({
+//   paused: true,
+//   defaults: { duration: duration2 }
+// });
+
+// // const startScrollPos2 = document.documentElement.scrollTop;
+// // document.documentElement.scrollTop = 0;
+
+// timeLine
+//   .from(weddingImg, { x: "800", opacity: "0" }, sceneStart2 + 300)
+//   .to(weddingImg, { x: "0", opacity: 1 });
+// // .to(weddingImg, { height: "30%" });
+
+// // document.documentElement.scrollTop = startScrollPos2;
+
+// // Set timeline time to scrollTop
+// function update2() {
+//   timeLine2.time(window.pageYOffset + triggerOffset2);
+// }
+
+// window.addEventListener("scroll", update2);
+// update2();
