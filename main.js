@@ -259,7 +259,7 @@ let offsetY = document.documentElement.clientHeight;
 
 function showWeddingImg() {
   let scrolledY = window.pageYOffset;
-  console.log(scrolledY);
+  // console.log(scrolledY);
   gsap.from(weddingImg, { x: "800", opacity: "0" });
   if (scrolledY > 750) {
     gsap.to(weddingImg, {
@@ -274,7 +274,20 @@ function showWeddingImg() {
 
 window.addEventListener("scroll", showWeddingImg);
 
-// // .to(weddingImg, { height: "30%" });
+// ---------------------
+// images alerts
+// ---------------------
+
+let galleryImages = document.querySelectorAll(".img-container img");
+let textButtons = document.querySelectorAll(".img-container .text");
+
+console.log(textButtons);
+
+textButtons.forEach(function(button) {
+  button.addEventListener("click", function() {
+    alert("me clickearon");
+  });
+});
 
 // ---------------------
 // gsap!
