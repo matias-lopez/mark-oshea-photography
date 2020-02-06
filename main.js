@@ -86,12 +86,11 @@ function widthChange(largeScreenMQ) {
   }
 }
 
-// navbar changes onscroll
+// navbar changes on scroll
 function changeNav() {
   let scrolled = window.pageYOffset;
   if (scrolled === 0) {
     editClasses(navList, ["nav-transparent", "nav-short"], false);
-    navList.classList.add("desktop-nav-transition");
     navLogo.classList.remove("invisible");
     navElements.forEach(function(navElement) {
       if (
@@ -110,7 +109,9 @@ function changeNav() {
     });
   } else {
     navList.classList.add("nav-transparent");
-    navList.classList.add("desktop-nav-transition");
+    if (!navList.classList.contains("nav-white")) {
+      navList.classList.add("desktop-nav-transition");
+    }
     navElements.forEach(function(navElement) {
       navElement.classList.add("desktop-nav-transition");
       if (
@@ -134,10 +135,12 @@ function changeNav() {
     editClasses(navLogo, ["opacity-transition", "invisible"]);
   } else {
     navList.classList.remove("nav-white");
+    editClasses(navLogo, ["invisible"], false);
   }
 }
 
 //JQuery for scroll animation (footer and portfolio)
+// ---------------------
 $(".footer-link").on("click", function() {
   const home = $("#home").position().top;
   // console.log(home);
@@ -161,7 +164,6 @@ $(".btn.portfolio").on("click", function() {
   );
 });
 
-// ---------------------
 // gsap!
 // ---------------------
 
@@ -203,13 +205,12 @@ function update() {
 window.addEventListener("scroll", update);
 update();
 
-// ---------------------
 // wedding image anim
 // ---------------------
 
-let weddingImg = document.querySelector(".wedding-image img");
+let weddingImg = document.querySelector("#wedding-image-container");
 let offsetY = document.documentElement.clientHeight;
-
+window.addEventListener("scroll", showWeddingImg);
 function showWeddingImg() {
   let scrolledY = window.pageYOffset;
   // console.log(scrolledY);
@@ -225,32 +226,38 @@ function showWeddingImg() {
   }
 }
 
-window.addEventListener("scroll", showWeddingImg);
-
+// images modals
 // ---------------------
-// images alerts
-// ---------------------
+// let images = document.querySelectorAll(".img-container img");
+let imageButtons = document.querySelectorAll(".img-container .img-button");
+let imageText = document.querySelector(".img-container .img-text");
+let modal = document.querySelector("#modal");
+let modalImage = document.querySelector(".modal-image");
+let modalCaption = document.querySelector(".modal-caption");
+let cross = document.querySelector("span.close");
 
-let galleryImages = document.querySelectorAll(".img-container img");
-let textButtons = document.querySelectorAll(".img-container .text");
-
-// console.log(textButtons);
-
-textButtons.forEach(function(button) {
+imageButtons.forEach(button => {
   button.addEventListener("click", function() {
-    alert("me clickearon");
+    modal.classList.add("visible");
+    modalImage.src = button.parentNode.firstElementChild.src;
+    modalImage.style.animation = "1s scale-image";
+    modalCaption.innerText = button.previousElementSibling.innerText;
+    modalCaption.style.animation = "1s scale-image";
+    cross.addEventListener("click", function modalClose() {
+      modal.classList.remove("visible");
+      modalImage.style.animation = "";
+      modalCaption.style.animation = "";
+      cross.removeEventListener("click", modalClose);
+    });
   });
 });
 
 // Auxiliar functions
-
 // add on remove style classes
 function editClasses(element, classes, add = true) {
-  if (add) {
-    classes.forEach(cl => element.classList.add(`${cl}`));
-  } else {
-    classes.forEach(cl => element.classList.remove(`${cl}`));
-  }
+  add
+    ? classes.forEach(cl => element.classList.add(`${cl}`))
+    : classes.forEach(cl => element.classList.remove(`${cl}`));
 }
 
 //----------------------/////////----------------------//
