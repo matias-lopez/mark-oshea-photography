@@ -8,10 +8,10 @@ const lineElements = document.querySelectorAll(".burger div");
 const largeScreenMQ = window.matchMedia("(min-width: 1024px)");
 
 //sets home-page height to 100vh
-window.addEventListener("resize", () => {
-  vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty("--vh", `${vh}px`);
-});
+// window.addEventListener("resize", () => {
+//   vh = window.innerHeight * 0.01;
+//   document.documentElement.style.setProperty("--vh", `${vh}px`);
+// });
 
 //click mobile menu
 burger.addEventListener("click", () => {
@@ -47,7 +47,7 @@ largeScreenMQ.addListener(() => {
 function widthChange(largeScreenMQ) {
   if (largeScreenMQ.matches) {
     window.addEventListener("scroll", changeNav);
-    navList.classList.remove("mobile-nav-transition");
+    navList.classList.remove("opacity-transition");
     navElements.forEach(function(navElement) {
       if (navElement.innerText !== "INSTAGRAM") {
         navElement.classList.add("expanded");
@@ -58,11 +58,20 @@ function widthChange(largeScreenMQ) {
         navElement.classList.add("instagram-expanded");
       }
     });
+    let scrolled = window.pageYOffset;
+    if (scrolled > window.innerHeight)
+      navList.classList.add("nav-white-transition");
   } else {
     window.removeEventListener("scroll", changeNav);
     editClasses(
       navList,
-      ["nav-transparent", "desktop-nav-transition", "nav-white", "nav-short"],
+      [
+        "nav-transparent",
+        "desktop-nav-transition",
+        "nav-white-transition",
+        "nav-white",
+        "nav-short"
+      ],
       false
     );
     navLogo.classList.remove("invisible");
@@ -91,7 +100,6 @@ function changeNav() {
   let scrolled = window.pageYOffset;
   if (scrolled === 0) {
     editClasses(navList, ["nav-transparent", "nav-short"], false);
-    navLogo.classList.remove("invisible");
     navElements.forEach(function(navElement) {
       if (
         navElement.innerText !== "ABOUT" &&
@@ -134,7 +142,7 @@ function changeNav() {
     editClasses(navList, ["nav-white", "nav-short"]);
     editClasses(navLogo, ["opacity-transition", "invisible"]);
   } else {
-    navList.classList.remove("nav-white");
+    editClasses(navList, ["nav-white", "nav-white-transition"], false);
     editClasses(navLogo, ["invisible"], false);
   }
 }

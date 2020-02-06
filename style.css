@@ -688,6 +688,10 @@ footer {
   width: 350px;
 }
 
+.nav-white-transition {
+  transition: all 1.2s ease;
+}
+
 /* animations */
 @-webkit-keyframes scale-image {
   0% {
