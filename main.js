@@ -8,10 +8,10 @@ const lineElements = document.querySelectorAll(".burger div");
 const largeScreenMQ = window.matchMedia("(min-width: 1024px)");
 
 //sets home-page height to 100vh
-// window.addEventListener("resize", () => {
-//   vh = window.innerHeight * 0.01;
-//   document.documentElement.style.setProperty("--vh", `${vh}px`);
-// });
+window.addEventListener("resize", () => {
+  vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
+});
 
 //click mobile menu
 burger.addEventListener("click", () => {
