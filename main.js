@@ -8,10 +8,10 @@ const lineElements = document.querySelectorAll(".burger div");
 const largeScreenMQ = window.matchMedia("(min-width: 1024px)");
 
 //sets home-page height to 100vh
-window.addEventListener("resize", () => {
-  vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty("--vh", `${vh}px`);
-});
+// window.addEventListener("resize", () => {
+//   vh = window.innerHeight * 0.01;
+//   document.documentElement.style.setProperty("--vh", `${vh}px`);
+// });
 
 //click mobile menu
 burger.addEventListener("click", () => {
@@ -27,6 +27,7 @@ let bindedSlideImage;
 if (largeScreenMQ.matches) {
   x = 700;
   bindedSlideImage = slideImage.bind(null, x);
+  window.addEventListener("DOMContentLoaded", bindedSlideImage);
   window.addEventListener("scroll", bindedSlideImage);
   window.addEventListener("scroll", changeNav);
   navElements.forEach(function(navElement) {
@@ -42,6 +43,7 @@ if (largeScreenMQ.matches) {
 } else {
   x = 550;
   bindedSlideImage = slideImage.bind(null, x);
+  window.addEventListener("DOMContentLoaded", bindedSlideImage);
   window.addEventListener("scroll", bindedSlideImage);
 }
 
@@ -212,15 +214,15 @@ $(".btn.portfolio").on("click", function() {
 let triggerOffset = document.documentElement.clientHeight;
 let sceneStart = triggerOffset;
 let duration = sceneStart;
-gsap.set(".timeline-trigger", {
-  top: triggerOffset
-});
-gsap.set(".start-trigger", {
-  top: sceneStart
-});
-gsap.set(".end-trigger", {
-  top: 2389
-});
+// gsap.set(".timeline-trigger", {
+//   top: triggerOffset
+// });
+// gsap.set(".start-trigger", {
+//   top: sceneStart
+// });
+// gsap.set(".end-trigger", {
+//   top: 2389
+// });
 
 let span = document.querySelector("#progress-bar");
 let timeLine = gsap.timeline({

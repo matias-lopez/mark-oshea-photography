@@ -832,7 +832,7 @@ footer {
 /* ---------------- */
 
 /* GSAP helpers */
-.marker {
+/* .marker {
   width: 100%;
   left: 0;
   pointer-events: none;
@@ -856,4 +856,4 @@ footer {
 .end-trigger {
   border: 1px solid red;
   position: absolute;
-}
+} */
