@@ -21,8 +21,13 @@ burger.addEventListener("click", () => {
   spanElements.forEach(span => span.classList.toggle("span-pointer"));
 });
 
-// when landing to the site, if viewport (vp) is bigger than 1024px
+let x;
+let bindedSlideImage;
+// when loading the website, if viewport (vp) is bigger than 1024px
 if (largeScreenMQ.matches) {
+  x = 700;
+  bindedSlideImage = slideImage.bind(null, x);
+  window.addEventListener("scroll", bindedSlideImage);
   window.addEventListener("scroll", changeNav);
   navElements.forEach(function(navElement) {
     if (navElement.innerText !== "INSTAGRAM") {
@@ -34,6 +39,10 @@ if (largeScreenMQ.matches) {
       navElement.classList.add("instagram-expanded");
     }
   });
+} else {
+  x = 550;
+  bindedSlideImage = slideImage.bind(null, x);
+  window.addEventListener("scroll", bindedSlideImage);
 }
 
 //listener to the width change (1024px)
@@ -147,93 +156,6 @@ function changeNav() {
   }
 }
 
-//JQuery for scroll animation (footer and portfolio)
-// ---------------------
-$(".footer-link").on("click", function() {
-  const home = $("#home").position().top;
-  // console.log(home);
-
-  $("html, body").animate(
-    {
-      scrollTop: home
-    },
-    1000
-  );
-});
-
-$(".btn.portfolio").on("click", function() {
-  const gallery = $("#gallery").position().top;
-
-  $("body, html").animate(
-    {
-      scrollTop: gallery
-    },
-    1000
-  );
-});
-
-// gsap!
-// ---------------------
-
-let triggerOffset = document.documentElement.clientHeight;
-let sceneStart = triggerOffset;
-let duration = sceneStart;
-
-// gsap.set(".timeline-trigger", {
-//   top: triggerOffset
-// });
-
-// gsap.set(".start-trigger", {
-//   top: sceneStart
-// });
-
-// gsap.set(".end-trigger", {
-//   top: 2389
-// });
-
-let span = document.querySelector("#progress-bar");
-
-let timeLine = gsap.timeline({
-  paused: true,
-  defaults: { duration: duration }
-});
-
-const startScrollPos = document.documentElement.scrollTop;
-document.documentElement.scrollTop = 0;
-
-timeLine.to(span, { width: "100%" }, sceneStart).to(span, { opacity: 0 });
-
-document.documentElement.scrollTop = startScrollPos;
-
-// Set timeline time to scrollTop
-function update() {
-  timeLine.time(window.pageYOffset + triggerOffset);
-}
-
-window.addEventListener("scroll", update);
-update();
-
-// wedding image anim
-// ---------------------
-
-let weddingImg = document.querySelector("#wedding-image-container");
-let offsetY = document.documentElement.clientHeight;
-window.addEventListener("scroll", showWeddingImg);
-function showWeddingImg() {
-  let scrolledY = window.pageYOffset;
-  // console.log(scrolledY);
-  gsap.from(weddingImg, { x: "800", opacity: "0" });
-  if (scrolledY > 750) {
-    gsap.to(weddingImg, {
-      x: "0",
-      opacity: "1",
-      duration: 1
-    });
-    // gsap.to(weddingImg, { x: "0", opacity: 1 });
-    window.removeEventListener("scroll", showWeddingImg);
-  }
-}
-
 // images modals
 // ---------------------
 // let images = document.querySelectorAll(".img-container img");
@@ -260,8 +182,86 @@ imageButtons.forEach(button => {
   });
 });
 
+//JQuery for scroll animation (footer and portfolio)
+// ---------------------
+$(".footer-link").on("click", function() {
+  const home = $("#home").position().top;
+  // console.log(home);
+
+  $("html, body").animate(
+    {
+      scrollTop: home
+    },
+    1000
+  );
+});
+
+$(".btn.portfolio").on("click", function() {
+  const gallery = $(".gallery-header").position().top;
+
+  $("body, html").animate(
+    {
+      scrollTop: gallery
+    },
+    1000
+  );
+});
+
+// gsap!
+// ---------------------
+let triggerOffset = document.documentElement.clientHeight;
+let sceneStart = triggerOffset;
+let duration = sceneStart;
+gsap.set(".timeline-trigger", {
+  top: triggerOffset
+});
+gsap.set(".start-trigger", {
+  top: sceneStart
+});
+gsap.set(".end-trigger", {
+  top: 2389
+});
+
+let span = document.querySelector("#progress-bar");
+let timeLine = gsap.timeline({
+  paused: true,
+  defaults: { duration: duration }
+});
+const startScrollPos = document.documentElement.scrollTop;
+document.documentElement.scrollTop = 0;
+timeLine.to(span, { width: "100%" }, sceneStart).to(span, { opacity: 0 });
+document.documentElement.scrollTop = startScrollPos;
+// Set timeline time to scrollTop
+function update() {
+  timeLine.time(window.pageYOffset + triggerOffset);
+}
+window.addEventListener("scroll", update);
+update();
+
+// wedding image anim
+let weddingImg = document.querySelector("#wedding-image-container");
+let offsetY = document.documentElement.clientHeight;
+
+// x = 950;
+// window.addEventListener("scroll", bindedSlideImage);
+
+function slideImage(heightOffset) {
+  let scrolledY = window.pageYOffset;
+  console.log("scorled " + scrolledY);
+  gsap.from(weddingImg, { x: "800", opacity: "0" });
+  if (scrolledY > heightOffset) {
+    gsap.to(weddingImg, {
+      x: "0",
+      opacity: "1",
+      duration: 1
+    });
+    // gsap.to(weddingImg, { x: "0", opacity: 1 });
+    window.removeEventListener("scroll", bindedSlideImage);
+  }
+}
+
 // Auxiliar functions
-// add on remove style classes
+// add or remove style classes
 function editClasses(element, classes, add = true) {
   add
     ? classes.forEach(cl => element.classList.add(`${cl}`))

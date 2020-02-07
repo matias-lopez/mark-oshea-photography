@@ -119,14 +119,14 @@ nav img {
 .home-text-content {
   text-align: center;
   position: absolute;
-  top: 45%;
+  top: 20%;
   width: 100%;
 }
 
 .home-text-content h1 {
   font-weight: 600;
-  font-size: 2.4rem;
-  letter-spacing: 0.6rem;
+  font-size: 2.3rem;
+  letter-spacing: 0.2em;
   text-shadow: 2.3px 2px 1.2px #515457e8;
   margin-top: -1rem;
   margin-left: 0.4rem;
@@ -159,11 +159,11 @@ nav img {
 
 .home-btns .btn.portfolio {
   background-color: var(--main-color-low-opacity);
-  margin-top: 4rem;
+  margin-top: 50%;
 }
 
 .home-btns .btn.contact {
-  margin-top: 0.2rem;
+  margin-top: 0.2em;
 }
 
 .home-btns .btn:hover,
@@ -203,8 +203,8 @@ nav img {
   margin: 2rem 2rem;
 }
 
-.wedding-text h2 {
-  margin: 0 0 2rem 0;
+.wedding-title {
+  margin: 4rem 0 4rem 0;
   text-align: center;
 }
 
@@ -226,7 +226,7 @@ nav img {
 
 /* GALLERY */
 .gallery-header {
-  margin: 4rem 0 2rem 0;
+  margin: 4rem 0 4rem 0;
 }
 
 /* desktop image modal */
@@ -241,7 +241,6 @@ nav img {
 .gallery-images img {
   width: 100%;
   height: 100%;
-  margin-top: 1rem;
 }
 
 .img-container {
@@ -294,6 +293,111 @@ footer {
 }
 
 /* MEDIA QUERIES */
+@media (min-width: 350px) {
+  .home-text-content h1 {
+    font-size: 2.5rem;
+    /* letter-spacing: 0.2em; */
+  }
+
+  .home-text-content h2 {
+    font-size: 2rem;
+  }
+
+  .home-btns .btn {
+    padding: 1rem 4.5rem;
+    font-size: 1.2em;
+  }
+
+  .home-btns .btn.portfolio {
+    margin-top: 50%;
+  }
+}
+
+@media (min-width: 400px) {
+  .home-text-content h1 {
+    font-size: 2.7rem;
+    letter-spacing: 0.26em;
+  }
+
+  .home-text-content h2 {
+    font-size: 2.1rem;
+  }
+
+  .home-btns .btn {
+    padding: 1rem 4.5rem;
+    font-size: 1.3em;
+  }
+
+  .home-btns .btn.portfolio {
+    margin-top: 70%;
+  }
+
+  .home-btns .btn.contact {
+    margin-top: 0.6em;
+  }
+}
+
+@media (min-width: 600px) {
+  .home-text-content h1 {
+    font-size: 3.5rem;
+    letter-spacing: 0.3em;
+  }
+
+  .home-text-content h2 {
+    font-size: 2.4rem;
+  }
+
+  .home-btns .btn {
+    padding: 1rem 5rem;
+    font-size: 1.4em;
+  }
+
+  .home-btns .btn.portfolio {
+    margin-top: 50%;
+  }
+
+  .home-btns .btn.contact {
+    margin-top: 0.7em;
+  }
+}
+
+@media (min-width: 728px) {
+  .home-text-content h1 {
+    font-size: 3.8rem;
+    letter-spacing: 0.4em;
+    margin-top: -3rem;
+  }
+
+  .home-text-content h2 {
+    font-size: 2.5rem;
+  }
+
+  .home-btns .btn {
+    padding: 1rem 5.25rem;
+    font-size: 1.5em;
+  }
+
+  .nav-list li {
+    font-size: 1.2em;
+    padding-top: 1.5rem;
+  }
+
+  .nav-list li:first-child {
+    padding-top: 3.5rem;
+  }
+
+  .nav-list li:last-child {
+    padding-bottom: 1.5rem;
+  }
+  /* .home-btns .btn.portfolio {
+    margin-top: 70%;
+  }
+
+  .home-btns .btn.contact {
+    margin-top: 0.6em;
+  } */
+}
+
 @media (min-width: 1024px) {
   #progress-bar {
     width: 0;
@@ -342,6 +446,8 @@ footer {
     text-decoration: none;
     font-weight: 600;
     background: none;
+    font-size: 0.9em;
+    /* padding-top: 1.5rem; */
   }
 
   .nav-list li:first-child {
@@ -364,11 +470,12 @@ footer {
 
   .home-text-content h1 {
     font-size: 5rem;
+    margin-top: 0.5rem;
   }
 
   .home-text-content h2 {
     font-size: 3rem;
-    line-height: 1.5rem;
+    line-height: 1.25rem;
   }
 
   .home-text-content .btn {
@@ -376,7 +483,7 @@ footer {
     font-weight: 500;
     display: block;
     color: white;
-    width: 15%;
+    /* width: 15%; */
     max-width: 300px;
     min-width: 220px;
     transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
@@ -725,7 +832,7 @@ footer {
 /* ---------------- */
 
 /* GSAP helpers */
-/* .marker {
+.marker {
   width: 100%;
   left: 0;
   pointer-events: none;
@@ -749,4 +856,4 @@ footer {
 .end-trigger {
   border: 1px solid red;
   position: absolute;
-} */
+}
